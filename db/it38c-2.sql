@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2025 at 08:44 AM
+-- Generation Time: Mar 13, 2025 at 08:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,37 @@ CREATE TABLE `login_logs` (
 INSERT INTO `login_logs` (`login_id`, `user_id`, `login_time`) VALUES
 (1, 1, '2025-02-13 14:58:18'),
 (2, 2, '2025-02-13 14:59:00'),
-(3, 1, '2025-02-13 15:00:29');
+(3, 1, '2025-02-13 15:00:29'),
+(4, 1, '2025-03-13 14:52:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_attendance`
+--
+
+CREATE TABLE `tbl_attendance` (
+  `attendance_id` varchar(50) NOT NULL,
+  `user_id` varchar(50) DEFAULT NULL,
+  `attendance_date` date DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_attendance`
+--
+
+INSERT INTO `tbl_attendance` (`attendance_id`, `user_id`, `attendance_date`, `created_at`) VALUES
+('attendance_001', 'user_1001', '2025-03-01', '2025-03-13 07:25:18'),
+('attendance_002', 'user_1002', '2025-03-01', '2025-03-13 07:25:18'),
+('attendance_003', 'user_1003', '2025-03-01', '2025-03-13 07:25:18'),
+('attendance_004', 'user_1001', '2025-03-02', '2025-03-13 07:25:18'),
+('attendance_005', 'user_1002', '2025-03-02', '2025-03-13 07:25:18'),
+('attendance_006', 'user_1004', '2025-03-03', '2025-03-13 07:25:18'),
+('attendance_007', 'user_1005', '2025-03-03', '2025-03-13 07:25:18'),
+('attendance_008', 'user_1003', '2025-03-04', '2025-03-13 07:25:18'),
+('attendance_009', 'user_1001', '2025-03-04', '2025-03-13 07:25:18'),
+('attendance_010', 'user_1005', '2025-03-05', '2025-03-13 07:25:18');
 
 -- --------------------------------------------------------
 
@@ -62,7 +92,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `user_type`, `last_login`, `created_at`) VALUES
-(1, 'admin', '$2y$10$LARyJPyQdXHFC9Bnkwob5emYh8yk8szyHJkVTqmxoAblSOR4tkbcK', 'admin', '2025-02-13 15:00:29', '2025-02-13 06:58:10'),
+(1, 'admin', '$2y$10$LARyJPyQdXHFC9Bnkwob5emYh8yk8szyHJkVTqmxoAblSOR4tkbcK', 'admin', '2025-03-13 14:52:36', '2025-02-13 06:58:10'),
 (2, 'user', '$2y$10$FsYYraSFCv3bT05fxvl8LupnL6BwHYl/NdISwIfzSY5uouYGmshFy', 'user', '2025-02-13 14:59:00', '2025-02-13 06:58:53');
 
 --
@@ -74,6 +104,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `user_type`, `last_login`, `c
 --
 ALTER TABLE `login_logs`
   ADD PRIMARY KEY (`login_id`);
+
+--
+-- Indexes for table `tbl_attendance`
+--
+ALTER TABLE `tbl_attendance`
+  ADD PRIMARY KEY (`attendance_id`);
 
 --
 -- Indexes for table `users`
@@ -89,7 +125,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `login_logs`
 --
 ALTER TABLE `login_logs`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
